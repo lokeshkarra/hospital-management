@@ -108,6 +108,12 @@
                                                 <i class="bi bi-person-x"></i>
                                             </a>
                                         </c:if>
+                                        <c:if test="${sessionScope.user.role == 'ADMIN'}">
+									        <a href="patients?action=purge&id=${patient.patientId}" class="btn btn-sm btn-danger" title="Delete Patient Permanently"
+									           onclick="return confirm('WARNING: This action is irreversible and will PERMANENTLY DELETE patient ${patient.fullName} (ID: ${patient.patientId}). Are you absolutely sure?');">
+									            <i class="bi bi-trash3-fill"></i>
+									        </a>
+									    </c:if>
                                     </td>
                                 </tr>
                             </c:forEach>
