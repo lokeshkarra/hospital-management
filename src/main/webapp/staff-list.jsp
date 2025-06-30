@@ -27,8 +27,20 @@
                 <hr>
 
                 <!-- Messages -->
-                <c:if test="${not empty sessionScope.message}"><!-- ... --></c:if>
-                <c:if test="${not empty sessionScope.error}"><!-- ... --></c:if>
+                <c:if test="${not empty sessionScope.message}">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        ${sessionScope.message}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <c:remove var="message" scope="session"/>
+                </c:if>
+                <c:if test="${not empty sessionScope.error}">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        ${sessionScope.error}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <c:remove var="error" scope="session"/>
+                </c:if>
 
                 <div class="mb-3">
                     <a href="staff?action=new" class="btn btn-primary">

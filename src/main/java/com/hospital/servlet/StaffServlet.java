@@ -73,16 +73,7 @@ public class StaffServlet extends HttpServlet {
         request.getRequestDispatcher("staff-form.jsp").forward(request, response);
     }
 
-//    private void showEditForm(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        User existingUser = userDAO.getUserById(id); // CHANGED
-//        request.setAttribute("user", existingUser); // CHANGED
-//        request.setAttribute("activePage", "staff");
-//        request.getRequestDispatcher("staff-form.jsp").forward(request, response);
-//    }
 
- // In StaffServlet.java
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

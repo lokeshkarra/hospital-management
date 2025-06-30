@@ -11,6 +11,7 @@ public class Invoice {
     private BigDecimal totalAmount;
     private Timestamp invoiceDate;
     private String status;
+    private String paymentMethod;
     private List<InvoiceItem> items;
 
     public Invoice() {
@@ -36,4 +37,6 @@ public class Invoice {
     public void setStatus(String status) { this.status = status; }
     public List<InvoiceItem> getItems() { return items; }
     public void setItems(List<InvoiceItem> items) { this.items = items; }
+    public String getPaymentMethod() { return paymentMethod; }
+    public void setPaymentMethod(String paymentMethod) { this.paymentMethod = paymentMethod; }
 }
