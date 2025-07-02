@@ -13,6 +13,8 @@ public class UserDAO {
         String sql = "SELECT * FROM users WHERE user_id = ? AND password = ? AND status = 'ACTIVE'";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        	System.out.println("Authenticating with userId=" + userId + " and password=" + password);
+
             pstmt.setString(1, userId);
             pstmt.setString(2, password);
             ResultSet rs = pstmt.executeQuery();
@@ -159,5 +161,39 @@ public class UserDAO {
             e.printStackTrace();
         }
         return 0;
+    }
+    
+ // Add these methods inside UserDAO.java
+
+    public boolean isUserIdTaken(String userId) {
+        String sql = "SELECT COUNT(*) FROM users WHERE user_id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, userId);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false; // Default to false on error to let other validation catch it
+    }
+
+    public boolean isEmailTaken(String email) {
+        String sql = "SELECT COUNT(*) FROM users WHERE email = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, email);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

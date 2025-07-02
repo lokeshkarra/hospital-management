@@ -40,43 +40,12 @@
             <small class="text-muted">
                 Demo credentials:<br>
                 Admin: admin123 / Admin@123456<br>
-                Doctor: doctor001 / Doctor@123
             </small>
         </div>
     </div>
     
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const loginForm = document.getElementById('loginForm');
-        const errorMsg = document.getElementById('errorMsg');
-        
-        function validateUserId(userId) {
-            return /^[a-zA-Z0-9]{8,}$/.test(userId);
-        }
-        
-        function validatePassword(password) {
-            return /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{10,}$/.test(password);
-        }
-        
-        loginForm.addEventListener('submit', function(event) {
-            const userId = document.getElementById('userId').value.trim();
-            const password = document.getElementById('password').value;
-            
-            errorMsg.textContent = '';
-            
-            if (!validateUserId(userId)) {
-                errorMsg.textContent = "User ID must be at least 8 characters and alphanumeric.";
-                event.preventDefault();
-                return;
-            }
-            
-            if (!validatePassword(password)) {
-                errorMsg.textContent = "Password must be at least 10 characters, including one uppercase, one number, and one special character.";
-                event.preventDefault();
-                return;
-            }
-        });
-    </script>
+    
 </body>
 </html>

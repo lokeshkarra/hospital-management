@@ -12,7 +12,7 @@ public class DatabaseConnection {
     static {
         try {
             Class.forName(DRIVER);
-            setupDatabase();
+            //setupDatabase();
         } catch (ClassNotFoundException e) {
             System.err.println("Derby driver not found.");
             e.printStackTrace();

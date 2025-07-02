@@ -44,6 +44,7 @@ public class LoginServlet extends HttpServlet {
         
         // Authenticate user
         User user = userDAO.authenticateUser(userId, password);
+        System.out.println(user);
         
         if (user != null) {
             // Create session
